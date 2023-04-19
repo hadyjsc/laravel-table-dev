@@ -66,7 +66,7 @@ namespace App\Tables;
 use App\Models\User;
 use JscDev\LaravelTable\Table;
 use JscDev\LaravelTable\Column;
-use Okipe\LaravelTable\Formatters\Date;
+use JscDev\LaravelTable\Formatters\Date;
 use JscDev\LaravelTable\Abstracts\AbstractTableConfiguration;
 
 class UsersTable extends AbstractTableConfiguration
