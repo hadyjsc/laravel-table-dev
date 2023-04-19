@@ -2,7 +2,7 @@
 
 Follow the steps below to upgrade the package.
 
-## Removed okipa/laravel-html-helper dependency
+## Removed JscDev/laravel-html-helper dependency
 
 If you do use the `laravel-html-helper` in your projet without having installed through composer, you should add it.
 
@@ -45,10 +45,10 @@ Table configuration signature has changed and now look this way:
 ```
 namespace App\Tables;
 
-use Okipa\LaravelTable\Table;
-use Okipa\LaravelTable\Column;
-use Okipa\LaravelTable\Result;
-use Okipa\LaravelTable\Abstracts\AbstractTableConfiguration;
+use JscDev\LaravelTable\Table;
+use JscDev\LaravelTable\Column;
+use JscDev\LaravelTable\Result;
+use JscDev\LaravelTable\Abstracts\AbstractTableConfiguration;
 
 class UsersTable extends AbstractTableConfiguration
 {
@@ -77,7 +77,7 @@ class UsersTable extends AbstractTableConfiguration
 ```
 
 As so, the following changes must be reported in your table configurations:
-* Replace each declaration of `use Okipa\LaravelTable\Abstracts\AbstractTable` by `use Okipa\LaravelTable\Abstracts\AbstractTableConfiguration;`
+* Replace each declaration of `use JscDev\LaravelTable\Abstracts\AbstractTable` by `use JscDev\LaravelTable\Abstracts\AbstractTableConfiguration;`
 * Replace each declaration of `extends AbstractTable` by `extends AbstractTableConfiguration`
 * Replace each declaration of `return (new Table())->` by `return Table::make()->` at the beginning of the `table()` function
 * Replace each declaration of `protected function columns(Table $table): void` function signatures by `protected function columns(): array`
@@ -186,7 +186,7 @@ Make sur you have read the [new provided documentation](../../README.md#how-to) 
 
 ## See all changes
 
-See all change with the [comparison tool](https://github.com/Okipa/laravel-table/compare/4.0.7...5.0.0).
+See all change with the [comparison tool](https://github.com/JscDev/laravel-table/compare/4.0.7...5.0.0).
 
 ## Undocumented changes
 

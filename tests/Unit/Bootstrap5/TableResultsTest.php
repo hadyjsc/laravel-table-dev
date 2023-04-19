@@ -8,10 +8,10 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Date;
 use Livewire\Livewire;
-use Okipa\LaravelTable\Abstracts\AbstractTableConfiguration;
-use Okipa\LaravelTable\Column;
-use Okipa\LaravelTable\Result;
-use Okipa\LaravelTable\Table;
+use JscDev\LaravelTable\Abstracts\AbstractTableConfiguration;
+use JscDev\LaravelTable\Column;
+use JscDev\LaravelTable\Result;
+use JscDev\LaravelTable\Table;
 use Tests\Models\User;
 use Tests\TestCase;
 
@@ -57,7 +57,7 @@ class TableResultsTest extends TestCase
                 ];
             }
         };
-        Livewire::test(\Okipa\LaravelTable\Livewire\Table::class, ['config' => $config::class])
+        Livewire::test(\JscDev\LaravelTable\Livewire\Table::class, ['config' => $config::class])
             ->call('init')
             ->assertSeeHtmlInOrder([
                 '<tfoot class="table-light">',

@@ -1,9 +1,9 @@
 <?php
 
-namespace Okipa\LaravelTable\HeadActions;
+namespace JscDev\LaravelTable\HeadActions;
 
 use Livewire\Component;
-use Okipa\LaravelTable\Abstracts\AbstractHeadAction;
+use JscDev\LaravelTable\Abstracts\AbstractHeadAction;
 
 class AddHeadAction extends AbstractHeadAction
 {

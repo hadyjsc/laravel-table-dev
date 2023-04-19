@@ -1,8 +1,8 @@
 <?php
 
-namespace Okipa\LaravelTable\Abstracts;
+namespace JscDev\LaravelTable\Abstracts;
 
-use Okipa\LaravelTable\Table;
+use JscDev\LaravelTable\Table;
 
 abstract class AbstractTableConfiguration
 {

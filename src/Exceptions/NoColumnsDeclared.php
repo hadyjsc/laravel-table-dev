@@ -1,6 +1,6 @@
 <?php
 
-namespace Okipa\LaravelTable\Exceptions;
+namespace JscDev\LaravelTable\Exceptions;
 
 use Exception;
 use Illuminate\Database\Eloquent\Model;

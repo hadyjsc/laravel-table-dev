@@ -4,9 +4,9 @@ namespace Tests\Unit\Bootstrap4;
 
 use Illuminate\Support\Facades\Config;
 use Livewire\Livewire;
-use Okipa\LaravelTable\Abstracts\AbstractTableConfiguration;
-use Okipa\LaravelTable\Column;
-use Okipa\LaravelTable\Table;
+use JscDev\LaravelTable\Abstracts\AbstractTableConfiguration;
+use JscDev\LaravelTable\Column;
+use JscDev\LaravelTable\Table;
 use Tests\Models\UserCategory;
 
 class TableReorderableTest extends \Tests\Unit\Bootstrap5\TableReorderableTest
@@ -32,7 +32,7 @@ class TableReorderableTest extends \Tests\Unit\Bootstrap5\TableReorderableTest
                 ];
             }
         };
-        Livewire::test(\Okipa\LaravelTable\Livewire\Table::class, ['config' => $config::class])
+        Livewire::test(\JscDev\LaravelTable\Livewire\Table::class, ['config' => $config::class])
             ->call('init')
             ->assertSeeHtmlInOrder([
                 '<div class="alert alert-info" role="alert">',

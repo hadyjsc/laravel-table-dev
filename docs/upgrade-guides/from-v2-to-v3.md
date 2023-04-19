@@ -21,7 +21,7 @@ There are small changes in the API you will have to report in your code:
 
 ## See all changes
 
-See all change with the [comparison tool](https://github.com/Okipa/laravel-table/compare/2.0.0...3.0.0).
+See all change with the [comparison tool](https://github.com/JscDev/laravel-table/compare/2.0.0...3.0.0).
 
 ## Undocumented changes
 

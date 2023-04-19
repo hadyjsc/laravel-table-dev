@@ -21,7 +21,7 @@
                                         @unless($resetFilters)
                                             <div wire:ignore>
                                         @endif
-                                            {!! Okipa\LaravelTable\Abstracts\AbstractFilter::make($filterArray)->render() !!}
+                                            {!! JscDev\LaravelTable\Abstracts\AbstractFilter::make($filterArray)->render() !!}
                                         @unless($resetFilters)
                                             </div>
                                         @endif
@@ -104,7 +104,7 @@
                                     {{-- Head action --}}
                                     @if($headActionArray)
                                         <div class="d-flex align-items-center ps-3 py-1">
-                                            {{ Okipa\LaravelTable\Abstracts\AbstractHeadAction::make($headActionArray)->render() }}
+                                            {{ JscDev\LaravelTable\Abstracts\AbstractHeadAction::make($headActionArray)->render() }}
                                         </div>
                                     @endif
                                 </div>
@@ -129,7 +129,7 @@
                                         </a>
                                         <ul class="dropdown-menu" aria-labelledby="bulk-actions-dropdown">
                                             @foreach($tableBulkActionsArray as $bulkActionArray)
-                                                {{ Okipa\LaravelTable\Abstracts\AbstractBulkAction::make($bulkActionArray)->render() }}
+                                                {{ JscDev\LaravelTable\Abstracts\AbstractBulkAction::make($bulkActionArray)->render() }}
                                             @endforeach
                                         </ul>
                                     </div>
@@ -201,9 +201,9 @@
                             @if($tableRowActionsArray)
                                 <td class="align-middle text-end">
                                     <div class="d-flex align-items-center justify-content-end">
-                                        @if($rowActionsArray = Okipa\LaravelTable\Abstracts\AbstractRowAction::retrieve($tableRowActionsArray, $model->getKey()))
+                                        @if($rowActionsArray = JscDev\LaravelTable\Abstracts\AbstractRowAction::retrieve($tableRowActionsArray, $model->getKey()))
                                             @foreach($rowActionsArray as $rowActionArray)
-                                                {{ Okipa\LaravelTable\Abstracts\AbstractRowAction::make($rowActionArray)->render($model) }}
+                                                {{ JscDev\LaravelTable\Abstracts\AbstractRowAction::make($rowActionArray)->render($model) }}
                                             @endforeach
                                         @endif
                                     </div>

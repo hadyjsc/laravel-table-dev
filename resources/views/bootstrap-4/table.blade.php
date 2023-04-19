@@ -10,23 +10,42 @@
                 {{-- Table header--}}
                 <thead>
                     {{-- Filters --}}
-                    @if($filtersArray)
+                    @if($filtersArray || $datePickers)
                         <tr>
                             <td class="px-0 pb-0"{!! $columnsCount > 1 ? ' colspan="' . $columnsCount . '"' : null !!}>
                                 <div class="d-flex flex-wrap align-items-center justify-content-end mt-n2">
                                     <div class="text-secondary mt-2">
                                         {!! config('laravel-table.icon.filter') !!}
                                     </div>
+                                    @foreach ($datePickers as $datePicker)
+                                    {{ $resetFilters }}
+                                        @unless($resetFilters)
+                                            <div wire:ignore>
+                                        @endif
+                                        {!! JscDev\LaravelTable\Abstracts\AbstractDatePicker::make($datePicker)->render() !!}
+                                        @unless($resetFilters)
+                                            </div>
+                                        @endif
+                                    @endforeach
+
                                     @foreach($filtersArray as $filterArray)
                                         @unless($resetFilters)
                                             <div wire:ignore>
                                         @endif
-                                            {!! Okipa\LaravelTable\Abstracts\AbstractFilter::make($filterArray)->render() !!}
+                                            {!! JscDev\LaravelTable\Abstracts\AbstractFilter::make($filterArray)->render() !!}
                                         @unless($resetFilters)
                                             </div>
                                         @endif
                                     @endforeach
                                     @if(collect($this->selectedFilters)->filter(fn(mixed $filter) => isset($filter) && $filter !== '' && $filter !== [])->isNotEmpty())
+                                        <a wire:click.prevent="resetFilters()"
+                                           class="btn btn-outline-secondary ml-3 mt-2"
+                                           title="{{ __('Reset filters') }}"
+                                           data-toggle="tooltip">
+                                            {!! config('laravel-table.icon.reset') !!}
+                                        </a>
+                                    @endif
+                                    @if(collect($this->arrayDatePickerFilters)->filter(fn(mixed $filter) => isset($filter) && $filter !== '' && $filter !== [])->isNotEmpty())
                                         <a wire:click.prevent="resetFilters()"
                                            class="btn btn-outline-secondary ml-3 mt-2"
                                            title="{{ __('Reset filters') }}"
@@ -112,7 +131,7 @@
                                     {{-- Head action --}}
                                     @if($headActionArray)
                                         <div class="d-flex align-items-center pl-3 py-1">
-                                            {{ Okipa\LaravelTable\Abstracts\AbstractHeadAction::make($headActionArray)->render() }}
+                                            {{ JscDev\LaravelTable\Abstracts\AbstractHeadAction::make($headActionArray)->render() }}
                                         </div>
                                     @endif
                                 </div>
@@ -137,7 +156,7 @@
                                         </a>
                                         <ul class="dropdown-menu" aria-labelledby="bulk-actions-dropdown">
                                             @foreach($tableBulkActionsArray as $bulkActionArray)
-                                                {{ Okipa\LaravelTable\Abstracts\AbstractBulkAction::make($bulkActionArray)->render() }}
+                                                {{ JscDev\LaravelTable\Abstracts\AbstractBulkAction::make($bulkActionArray)->render() }}
                                             @endforeach
                                         </ul>
                                     </div>
@@ -209,9 +228,9 @@
                             @if($tableRowActionsArray)
                                 <td class="align-middle text-end">
                                     <div class="d-flex align-items-center justify-content-end">
-                                        @if($rowActionsArray = Okipa\LaravelTable\Abstracts\AbstractRowAction::retrieve($tableRowActionsArray, $model->getKey()))
+                                        @if($rowActionsArray = JscDev\LaravelTable\Abstracts\AbstractRowAction::retrieve($tableRowActionsArray, $model->getKey()))
                                             @foreach($rowActionsArray as $rowActionArray)
-                                                {{ Okipa\LaravelTable\Abstracts\AbstractRowAction::make($rowActionArray)->render($model) }}
+                                                {{ JscDev\LaravelTable\Abstracts\AbstractRowAction::make($rowActionArray)->render($model) }}
                                             @endforeach
                                         @endif
                                     </div>

@@ -1,13 +1,13 @@
 <?php
 
-namespace Okipa\LaravelTable;
+namespace JscDev\LaravelTable;
 
 use Closure;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\HtmlString;
-use Okipa\LaravelTable\Abstracts\AbstractColumnAction;
-use Okipa\LaravelTable\Abstracts\AbstractFormatter;
-use Okipa\LaravelTable\Exceptions\InvalidColumnSortDirection;
+use JscDev\LaravelTable\Abstracts\AbstractColumnAction;
+use JscDev\LaravelTable\Abstracts\AbstractFormatter;
+use JscDev\LaravelTable\Exceptions\InvalidColumnSortDirection;
 
 class Column
 {
@@ -61,7 +61,7 @@ class Column
         return $this;
     }
 
-    /** @throws \Okipa\LaravelTable\Exceptions\InvalidColumnSortDirection */
+    /** @throws \JscDev\LaravelTable\Exceptions\InvalidColumnSortDirection */
     public function sortByDefault(string $sortDir = 'asc'): self
     {
         if (! in_array($sortDir, ['asc', 'desc'], true)) {

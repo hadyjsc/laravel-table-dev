@@ -1,9 +1,9 @@
 {
-    "name": "okipa/laravel-table",
-    "description": "Generate tables from Eloquent models.",
+    "name": "hadyjsc/laravel-table-dev",
+    "description": "Make to add new feature in JscDev/laravel-table.",
     "type": "library",
     "keywords": [
-        "Okipa",
+        "JscDev",
         "package",
         "laravel",
         "php",
@@ -14,9 +14,10 @@
         "generate",
         "generator",
         "generation",
-        "html"
+        "html",
+        "JscDev"
     ],
-    "homepage": "https://github.com/okipa/laravel-table",
+    "homepage": "https://github.com/hadyjsc/laravel-table-dev",
     "license": "MIT",
     "authors": [
         {
@@ -41,7 +42,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Okipa\\LaravelTable\\": "src/"
+            "JscDev\\LaravelTable\\": "src/"
         }
     },
     "autoload-dev": {
@@ -60,7 +61,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Okipa\\LaravelTable\\LaravelTableServiceProvider"
+                "JscDev\\LaravelTable\\LaravelTableServiceProvider"
             ]
         }
     },

@@ -6,9 +6,9 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\View\ComponentAttributeBag;
 
-abstract class AbstractFilter
+abstract class AbstractDatePicker
 {
-    public string $filterClass;
+    public string $datePickerClass;
 
     public string $identifier;
 
@@ -22,8 +22,6 @@ abstract class AbstractFilter
 
     protected array $options;
 
-    protected bool $multiple;
-
     abstract protected function identifier(): string;
 
     protected function class(): array
@@ -34,7 +32,6 @@ abstract class AbstractFilter
     protected function attributes(): array
     {
         return [
-            'multiple' => $this->multiple(),
             'placeholder' => $this->label(),
             'aria-label' => $this->label(),
             ...config('laravel-table.html_select_components_attributes'),
@@ -45,42 +42,39 @@ abstract class AbstractFilter
 
     abstract protected function options(): array;
 
-    abstract protected function multiple(): bool;
-
     abstract public function filter(Builder $query, mixed $selected): void;
 
     public function setup(string $modelKeyName): void
     {
-        $this->filterClass = $this::class;
+        $this->datePickerClass = $this::class;
         $this->identifier = $this->identifier();
         $this->modelKeyName = $modelKeyName;
     }
 
-    public static function retrieve(array $filtersArray, string $identifier): array
+    public static function retrieve(array $datePickerArray, string $identifier): array
     {
-        return collect($filtersArray)->firstOrFail('identifier', $identifier);
+        return collect($datePickerArray)->firstOrFail('identifier', $identifier);
     }
 
-    public static function make(array $filterArray): self
+    public static function make(array $datePickerArray): self
     {
-        /** @var \JscDev\LaravelTable\Abstracts\AbstractFilter $filterInstance */
-        $filterInstance = app($filterArray['filterClass'], $filterArray);
-        $filterInstance->filterClass = $filterArray['filterClass'];
-        $filterInstance->identifier = $filterArray['identifier'];
-        $filterInstance->modelKeyName = $filterArray['modelKeyName'];
+        /** @var \JscDev\LaravelTable\Abstracts\AbstractDatePicker $datePickerInstance */
+        $datePickerInstance = app($datePickerArray['datePickerClass'], $datePickerArray);
+        $datePickerInstance->datePickerClass = $datePickerArray['datePickerClass'];
+        $datePickerInstance->identifier = $datePickerArray['identifier'];
+        $datePickerInstance->modelKeyName = $datePickerArray['modelKeyName'];
 
-        return $filterInstance;
+        return $datePickerInstance;
     }
 
     public function render(): View
     {
-        return view('laravel-table::' . config('laravel-table.ui') . '.filter', [
+        return view('laravel-table::' . config('laravel-table.ui') . '.date-picker', [
             'filter' => $this,
             'class' => $this->class(),
             'attributes' => (new ComponentAttributeBag($this->attributes())),
             'label' => $this->label(),
             'options' => $this->options(),
-            'multiple' => $this->multiple(),
         ]);
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace Okipa\LaravelTable;
+namespace JscDev\LaravelTable;
 
 use Closure;
 use Illuminate\Database\Query\Builder;

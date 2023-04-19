@@ -6,13 +6,13 @@ use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Str;
 use Livewire\Livewire;
-use Okipa\LaravelTable\Abstracts\AbstractTableConfiguration;
-use Okipa\LaravelTable\Column;
-use Okipa\LaravelTable\Filters\BooleanFilter;
-use Okipa\LaravelTable\Filters\NullFilter;
-use Okipa\LaravelTable\Filters\RelationshipFilter;
-use Okipa\LaravelTable\Filters\ValueFilter;
-use Okipa\LaravelTable\Table;
+use JscDev\LaravelTable\Abstracts\AbstractTableConfiguration;
+use JscDev\LaravelTable\Column;
+use JscDev\LaravelTable\Filters\BooleanFilter;
+use JscDev\LaravelTable\Filters\NullFilter;
+use JscDev\LaravelTable\Filters\RelationshipFilter;
+use JscDev\LaravelTable\Filters\ValueFilter;
+use JscDev\LaravelTable\Table;
 use Tests\Models\Company;
 use Tests\Models\User;
 use Tests\Models\UserCategory;
@@ -55,7 +55,7 @@ class TableFiltersTest extends \Tests\Unit\Bootstrap5\TableFiltersTest
             }
         };
         $sortedUserEmails = User::orderBy('email')->pluck('email');
-        Livewire::test(\Okipa\LaravelTable\Livewire\Table::class, ['config' => $config::class])
+        Livewire::test(\JscDev\LaravelTable\Livewire\Table::class, ['config' => $config::class])
             ->call('init')
             ->assertSeeHtmlInOrder([
                 '<thead>',
@@ -277,7 +277,7 @@ class TableFiltersTest extends \Tests\Unit\Bootstrap5\TableFiltersTest
                 ];
             }
         };
-        Livewire::test(\Okipa\LaravelTable\Livewire\Table::class, ['config' => $config::class])
+        Livewire::test(\JscDev\LaravelTable\Livewire\Table::class, ['config' => $config::class])
             ->call('init')
             ->assertDontSeeHtml('<a wire:click.prevent="resetFilters()"')
             ->set('selectedFilters', ['filter_boolean_active' => null])
@@ -352,7 +352,7 @@ class TableFiltersTest extends \Tests\Unit\Bootstrap5\TableFiltersTest
                 ];
             }
         };
-        Livewire::test(\Okipa\LaravelTable\Livewire\Table::class, ['config' => $config::class])
+        Livewire::test(\JscDev\LaravelTable\Livewire\Table::class, ['config' => $config::class])
             ->call('init')
             ->assertSeeHtmlInOrder([
                 '<thead>',

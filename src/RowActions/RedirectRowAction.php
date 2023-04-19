@@ -1,11 +1,11 @@
 <?php
 
-namespace Okipa\LaravelTable\RowActions;
+namespace JscDev\LaravelTable\RowActions;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 use Livewire\Component;
-use Okipa\LaravelTable\Abstracts\AbstractRowAction;
+use JscDev\LaravelTable\Abstracts\AbstractRowAction;
 
 class RedirectRowAction extends AbstractRowAction
 {

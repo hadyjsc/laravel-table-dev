@@ -2,13 +2,13 @@
 
 Follow the steps below to upgrade the package.
 
-## Upgraded https://github.com/Okipa/laravel-html-helper to v2
+## Upgraded https://github.com/JscDev/laravel-html-helper to v2
 
 If you published the package views, you will have to follow the `laravel-html-helper` package upgrade guide to report the required changes.
 
 ## See all changes
 
-See all change with the [comparison tool](https://github.com/Okipa/laravel-table/compare/3.0.0...4.0.0).
+See all change with the [comparison tool](https://github.com/JscDev/laravel-table/compare/3.0.0...4.0.0).
 
 ## Undocumented changes
 

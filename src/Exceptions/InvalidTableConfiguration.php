@@ -1,9 +1,9 @@
 <?php
 
-namespace Okipa\LaravelTable\Exceptions;
+namespace JscDev\LaravelTable\Exceptions;
 
 use Exception;
-use Okipa\LaravelTable\Abstracts\AbstractTableConfiguration;
+use JscDev\LaravelTable\Abstracts\AbstractTableConfiguration;
 
 class InvalidTableConfiguration extends Exception
 {

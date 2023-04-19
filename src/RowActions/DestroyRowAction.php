@@ -1,10 +1,10 @@
 <?php
 
-namespace Okipa\LaravelTable\RowActions;
+namespace JscDev\LaravelTable\RowActions;
 
 use Illuminate\Database\Eloquent\Model;
 use Livewire\Component;
-use Okipa\LaravelTable\Abstracts\AbstractRowAction;
+use JscDev\LaravelTable\Abstracts\AbstractRowAction;
 
 class DestroyRowAction extends AbstractRowAction
 {

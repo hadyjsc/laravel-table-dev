@@ -5,9 +5,9 @@ namespace Tests\Unit\Bootstrap5;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Config;
 use Livewire\Livewire;
-use Okipa\LaravelTable\Abstracts\AbstractTableConfiguration;
-use Okipa\LaravelTable\Column;
-use Okipa\LaravelTable\Table;
+use JscDev\LaravelTable\Abstracts\AbstractTableConfiguration;
+use JscDev\LaravelTable\Column;
+use JscDev\LaravelTable\Table;
 use Tests\Models\User;
 use Tests\TestCase;
 
@@ -33,7 +33,7 @@ class TableNumberOfRowsPerPageTest extends TestCase
                 ];
             }
         };
-        Livewire::test(\Okipa\LaravelTable\Livewire\Table::class, ['config' => $config::class])
+        Livewire::test(\JscDev\LaravelTable\Livewire\Table::class, ['config' => $config::class])
             ->call('init')
             ->assertDontSeeHtml('<select wire:change="changeNumberOfRowsPerPage($event.target.value)"');
     }
@@ -56,7 +56,7 @@ class TableNumberOfRowsPerPageTest extends TestCase
                 ];
             }
         };
-        Livewire::test(\Okipa\LaravelTable\Livewire\Table::class, ['config' => $config::class])
+        Livewire::test(\JscDev\LaravelTable\Livewire\Table::class, ['config' => $config::class])
             ->call('init')
             ->assertDontSeeHtml('<select wire:change="changeNumberOfRowsPerPage($event.target.value)"');
     }
@@ -79,7 +79,7 @@ class TableNumberOfRowsPerPageTest extends TestCase
                 ];
             }
         };
-        Livewire::test(\Okipa\LaravelTable\Livewire\Table::class, ['config' => $config::class])
+        Livewire::test(\JscDev\LaravelTable\Livewire\Table::class, ['config' => $config::class])
             ->call('init')
             ->assertSeeHtmlInOrder([
                 '<select wire:change="changeNumberOfRowsPerPage($event.target.value)"',
@@ -104,7 +104,7 @@ class TableNumberOfRowsPerPageTest extends TestCase
                 ];
             }
         };
-        Livewire::test(\Okipa\LaravelTable\Livewire\Table::class, ['config' => $config::class])
+        Livewire::test(\JscDev\LaravelTable\Livewire\Table::class, ['config' => $config::class])
             ->call('init')
             ->assertSeeHtmlInOrder([
                 '<select wire:change="changeNumberOfRowsPerPage($event.target.value)"',
@@ -131,7 +131,7 @@ class TableNumberOfRowsPerPageTest extends TestCase
                 ];
             }
         };
-        Livewire::test(\Okipa\LaravelTable\Livewire\Table::class, ['config' => $config::class])
+        Livewire::test(\JscDev\LaravelTable\Livewire\Table::class, ['config' => $config::class])
             ->call('init')
             ->assertSet('numberOfRowsPerPage', 1)
             ->assertSeeHtmlInOrder([
@@ -185,7 +185,7 @@ class TableNumberOfRowsPerPageTest extends TestCase
                 ];
             }
         };
-        Livewire::test(\Okipa\LaravelTable\Livewire\Table::class, ['config' => $config::class])
+        Livewire::test(\JscDev\LaravelTable\Livewire\Table::class, ['config' => $config::class])
             ->call('init')
             ->assertSet('numberOfRowsPerPage', 1)
             ->assertSeeHtmlInOrder([
@@ -242,7 +242,7 @@ class TableNumberOfRowsPerPageTest extends TestCase
                 $notDisplayedHtml[] = '<th wire:key="cell-id-' . $user->id . '" class="align-middle" scope="row">';
             }
         }
-        Livewire::test(\Okipa\LaravelTable\Livewire\Table::class, ['config' => $config::class])
+        Livewire::test(\JscDev\LaravelTable\Livewire\Table::class, ['config' => $config::class])
             ->call('init')
             ->assertSet('numberOfRowsPerPage', 1)
             ->assertSeeHtmlInOrder([
@@ -300,7 +300,7 @@ class TableNumberOfRowsPerPageTest extends TestCase
             $values[] = $user->id;
             $values[] = '</th>';
         }
-        Livewire::test(\Okipa\LaravelTable\Livewire\Table::class, ['config' => $config::class])
+        Livewire::test(\JscDev\LaravelTable\Livewire\Table::class, ['config' => $config::class])
             ->call('init')
             ->call('changeNumberOfRowsPerPage', 5)
             ->assertSet('numberOfRowsPerPage', 5)
@@ -351,7 +351,7 @@ class TableNumberOfRowsPerPageTest extends TestCase
                 ];
             }
         };
-        Livewire::test(\Okipa\LaravelTable\Livewire\Table::class, ['config' => $config::class])
+        Livewire::test(\JscDev\LaravelTable\Livewire\Table::class, ['config' => $config::class])
             ->call('init')
             ->assertSeeHtmlInOrder([
                 '<thead>',

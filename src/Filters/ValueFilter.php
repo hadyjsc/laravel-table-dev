@@ -1,10 +1,10 @@
 <?php
 
-namespace Okipa\LaravelTable\Filters;
+namespace JscDev\LaravelTable\Filters;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Arr;
-use Okipa\LaravelTable\Abstracts\AbstractFilter;
+use JscDev\LaravelTable\Abstracts\AbstractFilter;
 
 class ValueFilter extends AbstractFilter
 {

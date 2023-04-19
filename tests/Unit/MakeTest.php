@@ -4,13 +4,13 @@ namespace Tests\Unit;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\File;
-use Okipa\LaravelTable\Console\Commands\MakeBulkAction;
-use Okipa\LaravelTable\Console\Commands\MakeColumnAction;
-use Okipa\LaravelTable\Console\Commands\MakeFilter;
-use Okipa\LaravelTable\Console\Commands\MakeFormatter;
-use Okipa\LaravelTable\Console\Commands\MakeHeadAction;
-use Okipa\LaravelTable\Console\Commands\MakeRowAction;
-use Okipa\LaravelTable\Console\Commands\MakeTable;
+use JscDev\LaravelTable\Console\Commands\MakeBulkAction;
+use JscDev\LaravelTable\Console\Commands\MakeColumnAction;
+use JscDev\LaravelTable\Console\Commands\MakeFilter;
+use JscDev\LaravelTable\Console\Commands\MakeFormatter;
+use JscDev\LaravelTable\Console\Commands\MakeHeadAction;
+use JscDev\LaravelTable\Console\Commands\MakeRowAction;
+use JscDev\LaravelTable\Console\Commands\MakeTable;
 use Tests\TestCase;
 
 class MakeTest extends TestCase
@@ -31,8 +31,8 @@ class MakeTest extends TestCase
         $fileContent = File::get(base_path('app/Tables/UsersTable.php'));
         $this->assertSeeHtmlInOrder($fileContent, [
             'namespace App\Tables;',
-            'use Okipa\LaravelTable\Abstracts\AbstractTableConfiguration;',
-            'use Okipa\LaravelTable\Table;',
+            'use JscDev\LaravelTable\Abstracts\AbstractTableConfiguration;',
+            'use JscDev\LaravelTable\Table;',
             'class UsersTable extends AbstractTableConfiguration',
             '{',
             'protected function table(): Table',
@@ -61,12 +61,12 @@ class MakeTest extends TestCase
         $this->assertSeeHtmlInOrder($fileContent, [
             'namespace App\Tables;',
             'use App\Models\User;',
-            'use Okipa\LaravelTable\Abstracts\AbstractTableConfiguration;',
-            'use Okipa\LaravelTable\Column;',
-            'use Okipa\LaravelTable\Formatters\DateFormatter;',
-            'use Okipa\LaravelTable\RowActions\DestroyRowAction;',
-            'use Okipa\LaravelTable\RowActions\EditRowAction;',
-            'use Okipa\LaravelTable\Table;',
+            'use JscDev\LaravelTable\Abstracts\AbstractTableConfiguration;',
+            'use JscDev\LaravelTable\Column;',
+            'use JscDev\LaravelTable\Formatters\DateFormatter;',
+            'use JscDev\LaravelTable\RowActions\DestroyRowAction;',
+            'use JscDev\LaravelTable\RowActions\EditRowAction;',
+            'use JscDev\LaravelTable\Table;',
             'class UsersTable extends AbstractTableConfiguration',
             '{',
             'protected function table(): Table',
@@ -103,7 +103,7 @@ class MakeTest extends TestCase
         $this->assertSeeHtmlInOrder($fileContent, [
             'namespace App\Tables\Filters;',
             'use Illuminate\Database\Eloquent\Builder;',
-            'use Okipa\LaravelTable\Abstracts\AbstractFilter;',
+            'use JscDev\LaravelTable\Abstracts\AbstractFilter;',
             'class MyNewFilter extends AbstractFilter',
             '{',
             'protected function identifier(): string',
@@ -157,7 +157,7 @@ class MakeTest extends TestCase
         $this->assertSeeHtmlInOrder($fileContent, [
             'namespace App\Tables\HeadActions;',
             'use Livewire\Component;',
-            'use Okipa\LaravelTable\Abstracts\AbstractHeadAction;',
+            'use JscDev\LaravelTable\Abstracts\AbstractHeadAction;',
             'class MyNewHeadAction extends AbstractHeadAction',
             '{',
             'protected function class(): array',
@@ -193,7 +193,7 @@ class MakeTest extends TestCase
             'namespace App\Tables\BulkActions;',
             'use Illuminate\Support\Collection;',
             'use Livewire\Component;',
-            'use Okipa\LaravelTable\Abstracts\AbstractBulkAction;',
+            'use JscDev\LaravelTable\Abstracts\AbstractBulkAction;',
             'class MyNewBulkAction extends AbstractBulkAction',
             '{',
             'protected function identifier(): string',
@@ -234,7 +234,7 @@ class MakeTest extends TestCase
             'namespace App\Tables\RowActions;',
             'use Illuminate\Database\Eloquent\Model;',
             'use Livewire\Component;',
-            'use Okipa\LaravelTable\Abstracts\AbstractRowAction;',
+            'use JscDev\LaravelTable\Abstracts\AbstractRowAction;',
             'class MyNewRowAction extends AbstractRowAction',
             '{',
             'protected function identifier(): string',
@@ -283,7 +283,7 @@ class MakeTest extends TestCase
         $this->assertSeeHtmlInOrder($fileContent, [
             'namespace App\Tables\Formatters;',
             'use Illuminate\Database\Eloquent\Model;',
-            'use Okipa\LaravelTable\Abstracts\AbstractFormatter;',
+            'use JscDev\LaravelTable\Abstracts\AbstractFormatter;',
             'class MyNewFormatter extends AbstractFormatter',
             '{',
             'public function format(Model $model, string $attribute): string',
@@ -304,7 +304,7 @@ class MakeTest extends TestCase
             'namespace App\Tables\ColumnActions;',
             'use Illuminate\Database\Eloquent\Model;',
             'use Livewire\Component;',
-            'use Okipa\LaravelTable\Abstracts\AbstractColumnAction;',
+            'use JscDev\LaravelTable\Abstracts\AbstractColumnAction;',
             'class MyNewColumnAction extends AbstractColumnAction',
             '{',
             'protected function class(Model $model, string $attribute): array',

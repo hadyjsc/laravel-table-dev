@@ -6,12 +6,12 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Config;
 use Livewire\Livewire;
-use Okipa\LaravelTable\Abstracts\AbstractTableConfiguration;
-use Okipa\LaravelTable\Column;
-use Okipa\LaravelTable\RowActions\DestroyRowAction;
-use Okipa\LaravelTable\RowActions\EditRowAction;
-use Okipa\LaravelTable\RowActions\ShowRowAction;
-use Okipa\LaravelTable\Table;
+use JscDev\LaravelTable\Abstracts\AbstractTableConfiguration;
+use JscDev\LaravelTable\Column;
+use JscDev\LaravelTable\RowActions\DestroyRowAction;
+use JscDev\LaravelTable\RowActions\EditRowAction;
+use JscDev\LaravelTable\RowActions\ShowRowAction;
+use JscDev\LaravelTable\Table;
 use Tests\Models\User;
 use Tests\TestCase;
 
@@ -46,7 +46,7 @@ class TableRowActionsTest extends TestCase
                 ];
             }
         };
-        Livewire::test(\Okipa\LaravelTable\Livewire\Table::class, ['config' => $config::class])
+        Livewire::test(\JscDev\LaravelTable\Livewire\Table::class, ['config' => $config::class])
             ->call('init')
             ->assertSeeHtmlInOrder([
                 '<thead>',
@@ -163,7 +163,7 @@ class TableRowActionsTest extends TestCase
             }
         };
         Livewire::actingAs($users->first())
-            ->test(\Okipa\LaravelTable\Livewire\Table::class, ['config' => $config::class])
+            ->test(\JscDev\LaravelTable\Livewire\Table::class, ['config' => $config::class])
             ->call('init')
             ->assertSeeHtmlInOrder([
                 '<tbody>',
@@ -209,7 +209,7 @@ class TableRowActionsTest extends TestCase
                 ];
             }
         };
-        Livewire::test(\Okipa\LaravelTable\Livewire\Table::class, ['config' => $config::class])
+        Livewire::test(\JscDev\LaravelTable\Livewire\Table::class, ['config' => $config::class])
             ->call('init')
             ->assertSeeHtmlInOrder([
                 '<tbody>',

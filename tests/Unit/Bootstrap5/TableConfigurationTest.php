@@ -6,9 +6,9 @@ use ErrorException;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Livewire\Livewire;
-use Okipa\LaravelTable\Abstracts\AbstractTableConfiguration;
-use Okipa\LaravelTable\Column;
-use Okipa\LaravelTable\Table;
+use JscDev\LaravelTable\Abstracts\AbstractTableConfiguration;
+use JscDev\LaravelTable\Column;
+use JscDev\LaravelTable\Table;
 use Tests\Models\User;
 use Tests\TestCase;
 
@@ -26,7 +26,7 @@ class TableConfigurationTest extends TestCase
         $this->expectException(ErrorException::class);
         $this->expectExceptionMessage('The given ' . $config::class
             . ' table config should extend ' . AbstractTableConfiguration::class . '.');
-        Livewire::test(\Okipa\LaravelTable\Livewire\Table::class, ['config' => $config::class])->call('init');
+        Livewire::test(\JscDev\LaravelTable\Livewire\Table::class, ['config' => $config::class])->call('init');
     }
 
     /** @test */
@@ -51,7 +51,7 @@ class TableConfigurationTest extends TestCase
                 ];
             }
         };
-        Livewire::test(\Okipa\LaravelTable\Livewire\Table::class, ['config' => $config::class])
+        Livewire::test(\JscDev\LaravelTable\Livewire\Table::class, ['config' => $config::class])
             ->assertEmitted('simple:test:event')
             ->assertEmitted('test:event:with:params', ['my', 'test', 'event', 'params']);
     }
@@ -73,7 +73,7 @@ class TableConfigurationTest extends TestCase
                 ];
             }
         };
-        Livewire::test(\Okipa\LaravelTable\Livewire\Table::class, ['config' => $config::class])
+        Livewire::test(\JscDev\LaravelTable\Livewire\Table::class, ['config' => $config::class])
             ->assertSeeHtmlInOrder([
                 '<div class="d-flex align-items-center py-3">',
                 '<div class="spinner-border text-dark me-3" role="status">',
@@ -109,7 +109,7 @@ class TableConfigurationTest extends TestCase
                 ];
             }
         };
-        Livewire::test(\Okipa\LaravelTable\Livewire\Table::class, ['config' => $config::class])
+        Livewire::test(\JscDev\LaravelTable\Livewire\Table::class, ['config' => $config::class])
             ->call('init')
             // No config targeting
             ->emit('laraveltable:refresh', ['userIdToExclude' => $users->first()->id])

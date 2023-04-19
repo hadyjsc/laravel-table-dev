@@ -1,16 +1,16 @@
 <?php
 
-namespace Okipa\LaravelTable;
+namespace JscDev\LaravelTable;
 
 use Illuminate\Support\ServiceProvider;
 use Livewire\Livewire;
-use Okipa\LaravelTable\Console\Commands\MakeBulkAction;
-use Okipa\LaravelTable\Console\Commands\MakeColumnAction;
-use Okipa\LaravelTable\Console\Commands\MakeFilter;
-use Okipa\LaravelTable\Console\Commands\MakeFormatter;
-use Okipa\LaravelTable\Console\Commands\MakeHeadAction;
-use Okipa\LaravelTable\Console\Commands\MakeRowAction;
-use Okipa\LaravelTable\Console\Commands\MakeTable;
+use JscDev\LaravelTable\Console\Commands\MakeBulkAction;
+use JscDev\LaravelTable\Console\Commands\MakeColumnAction;
+use JscDev\LaravelTable\Console\Commands\MakeFilter;
+use JscDev\LaravelTable\Console\Commands\MakeFormatter;
+use JscDev\LaravelTable\Console\Commands\MakeHeadAction;
+use JscDev\LaravelTable\Console\Commands\MakeRowAction;
+use JscDev\LaravelTable\Console\Commands\MakeTable;
 
 class LaravelTableServiceProvider extends ServiceProvider
 {
@@ -28,7 +28,7 @@ class LaravelTableServiceProvider extends ServiceProvider
 
     protected function registerLivewireComponents(): void
     {
-        Livewire::component('table', \Okipa\LaravelTable\Livewire\Table::class);
+        Livewire::component('table', \JscDev\LaravelTable\Livewire\Table::class);
     }
 
     public function register(): void

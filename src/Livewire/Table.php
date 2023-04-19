@@ -1,6 +1,6 @@
 <?php
 
-namespace Okipa\LaravelTable\Livewire;
+namespace JscDev\LaravelTable\Livewire;
 
 use Illuminate\Contracts\View\View;
 use Illuminate\Database\Eloquent\Model;
@@ -8,13 +8,13 @@ use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
 use Livewire\Component;
 use Livewire\WithPagination;
-use Okipa\LaravelTable\Abstracts\AbstractBulkAction;
-use Okipa\LaravelTable\Abstracts\AbstractColumnAction;
-use Okipa\LaravelTable\Abstracts\AbstractHeadAction;
-use Okipa\LaravelTable\Abstracts\AbstractRowAction;
-use Okipa\LaravelTable\Abstracts\AbstractTableConfiguration;
-use Okipa\LaravelTable\Exceptions\InvalidTableConfiguration;
-use Okipa\LaravelTable\Exceptions\UnrecognizedActionType;
+use JscDev\LaravelTable\Abstracts\AbstractBulkAction;
+use JscDev\LaravelTable\Abstracts\AbstractColumnAction;
+use JscDev\LaravelTable\Abstracts\AbstractHeadAction;
+use JscDev\LaravelTable\Abstracts\AbstractRowAction;
+use JscDev\LaravelTable\Abstracts\AbstractTableConfiguration;
+use JscDev\LaravelTable\Exceptions\InvalidTableConfiguration;
+use JscDev\LaravelTable\Exceptions\UnrecognizedActionType;
 
 /**
  * @SuppressWarnings(PHPMD.TooManyFields)
@@ -30,7 +30,7 @@ class Table extends Component
 
     public array $configParams = [];
 
-    public \Okipa\LaravelTable\Table $table;
+    public \JscDev\LaravelTable\Table $table;
 
     public string $paginationTheme = 'bootstrap';
 
@@ -50,6 +50,10 @@ class Table extends Component
 
     public array $selectedFilters = [];
 
+    public string $datePickerFilters = "";
+
+    public array $arrayDatePickerFilters = [];
+
     public bool $resetFilters = false;
 
     public array $headActionArray;
@@ -68,6 +72,7 @@ class Table extends Component
         'laraveltable:filters:wire:ignore:cancel' => 'cancelWireIgnoreOnFilters',
         'laraveltable:action:confirmed' => 'actionConfirmed',
         'laraveltable:refresh' => 'refresh',
+        'datepicker:script:set'=> 'datePickerSet'
     ];
 
     public function init(): void
@@ -84,8 +89,8 @@ class Table extends Component
     }
 
     /**
-     * @throws \Okipa\LaravelTable\Exceptions\InvalidTableConfiguration
-     * @throws \Okipa\LaravelTable\Exceptions\NoColumnsDeclared
+     * @throws \JscDev\LaravelTable\Exceptions\InvalidTableConfiguration
+     * @throws \JscDev\LaravelTable\Exceptions\NoColumnsDeclared
      * @throws \JsonException
      */
     public function render(): View
@@ -95,7 +100,7 @@ class Table extends Component
         return view('laravel-table::' . config('laravel-table.ui') . '.table', $this->buildTable($config));
     }
 
-    /** @throws \Okipa\LaravelTable\Exceptions\InvalidTableConfiguration */
+    /** @throws \JscDev\LaravelTable\Exceptions\InvalidTableConfiguration */
     protected function buildConfig(): AbstractTableConfiguration
     {
         /** @var mixed $config */
@@ -111,7 +116,7 @@ class Table extends Component
     }
 
     /**
-     * @throws \Okipa\LaravelTable\Exceptions\NoColumnsDeclared
+     * @throws \JscDev\LaravelTable\Exceptions\NoColumnsDeclared
      * @throws \JsonException
      */
     protected function buildTable(AbstractTableConfiguration $config): array
@@ -137,9 +142,14 @@ class Table extends Component
         // Filters
         $filtersArray = $table->generateFiltersArray();
         $filterClosures = $table->getFilterClosures($filtersArray, $this->selectedFilters);
+        // Date Picker
+        $datePickers = $table->generateDatePicker();
+        $datePickerClosures = $table->getDatePickerClosures($datePickers, $this->arrayDatePickerFilters);
+        $this->emit('datepicker:script');
         // Query preparation
         $query = $table->prepareQuery(
             $filterClosures,
+            $datePickerClosures,
             $this->searchBy,
             $sortableClosure ?: $this->sortBy,
             $this->sortDir,
@@ -172,6 +182,7 @@ class Table extends Component
             'rows' => $table->getRows(),
             'orderColumn' => $table->getOrderColumn(),
             'filtersArray' => $filtersArray,
+            'datePickers' => $datePickers,
             'numberOfRowsPerPageChoiceEnabled' => $table->isNumberOfRowsPerPageChoiceEnabled(),
             'numberOfRowsPerPageOptions' => $numberOfRowsPerPageOptions,
             'tableRowClass' => $table->getRowClass(),
@@ -263,9 +274,24 @@ class Table extends Component
         $this->selectedModelKeys = $this->selectAll ? ['selectAll'] : ['unselectAll'];
     }
 
+    public function datePickerSet($identifier, $selected)
+    {
+        if ( !is_null($selected) && is_string($selected)) {
+            $this->datePickerFilters = $selected;
+            $selected = explode(" - ", $selected);
+            if( count($selected) == 1) {
+                $this->arrayDatePickerFilters[$identifier] = [ 'start' =>  $selected[0], 'end' => $selected[0]];
+            }else {
+                $this->arrayDatePickerFilters[$identifier] = [ 'start' =>  $selected[0], 'end' => $selected[1]];
+            }
+        }
+    }
+
     public function resetFilters(): void
     {
         $this->selectedFilters = [];
+        $this->datePickerFilters = "";
+        $this->arrayDatePickerFilters = [];
         $this->resetFilters = true;
         $this->emitSelf('laraveltable:filters:wire:ignore:cancel');
     }
@@ -275,7 +301,7 @@ class Table extends Component
         $this->resetFilters = false;
     }
 
-    /** @throws \Okipa\LaravelTable\Exceptions\UnrecognizedActionType */
+    /** @throws \JscDev\LaravelTable\Exceptions\UnrecognizedActionType */
     public function actionConfirmed(string $actionType, string $identifier, string|null $modelKey): mixed
     {
         return match ($actionType) {

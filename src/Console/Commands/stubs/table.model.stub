@@ -3,12 +3,12 @@
 namespace DummyNamespace;
 
 use DummyFullModelClass;
-use Okipa\LaravelTable\Table;
-use Okipa\LaravelTable\Column;
-use Okipa\LaravelTable\RowActions\EditRowAction;
-use Okipa\LaravelTable\RowActions\DestroyRowAction;
-use Okipa\LaravelTable\Formatters\DateFormatter;
-use Okipa\LaravelTable\Abstracts\AbstractTableConfiguration;
+use JscDev\LaravelTable\Table;
+use JscDev\LaravelTable\Column;
+use JscDev\LaravelTable\RowActions\EditRowAction;
+use JscDev\LaravelTable\RowActions\DestroyRowAction;
+use JscDev\LaravelTable\Formatters\DateFormatter;
+use JscDev\LaravelTable\Abstracts\AbstractTableConfiguration;
 
 class DummyClass extends AbstractTableConfiguration
 {

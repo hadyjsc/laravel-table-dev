@@ -8,11 +8,11 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Date;
 use Livewire\Livewire;
-use Okipa\LaravelTable\Abstracts\AbstractTableConfiguration;
-use Okipa\LaravelTable\Column;
-use Okipa\LaravelTable\ColumnActions\ToggleBooleanColumnAction;
-use Okipa\LaravelTable\ColumnActions\ToggleEmailVerifiedColumnAction;
-use Okipa\LaravelTable\Table;
+use JscDev\LaravelTable\Abstracts\AbstractTableConfiguration;
+use JscDev\LaravelTable\Column;
+use JscDev\LaravelTable\ColumnActions\ToggleBooleanColumnAction;
+use JscDev\LaravelTable\ColumnActions\ToggleEmailVerifiedColumnAction;
+use JscDev\LaravelTable\Table;
 use Tests\Models\User;
 use Tests\TestCase;
 
@@ -50,7 +50,7 @@ class ColumnActionTest extends TestCase
                 ];
             }
         };
-        Livewire::test(\Okipa\LaravelTable\Livewire\Table::class, ['config' => $config::class])
+        Livewire::test(\JscDev\LaravelTable\Livewire\Table::class, ['config' => $config::class])
             ->call('init')
             ->assertSeeHtmlInOrder([
                 '<tbody>',
@@ -157,7 +157,7 @@ class ColumnActionTest extends TestCase
             }
         };
         Livewire::actingAs($users->last())
-            ->test(\Okipa\LaravelTable\Livewire\Table::class, ['config' => $config::class])
+            ->test(\JscDev\LaravelTable\Livewire\Table::class, ['config' => $config::class])
             ->call('init')
             ->assertSeeHtmlInOrder([
                 '<tbody>',
@@ -201,7 +201,7 @@ class ColumnActionTest extends TestCase
                 ];
             }
         };
-        Livewire::test(\Okipa\LaravelTable\Livewire\Table::class, ['config' => $config::class])
+        Livewire::test(\JscDev\LaravelTable\Livewire\Table::class, ['config' => $config::class])
             ->call('init')
             ->assertSeeHtmlInOrder([
                 '<tbody>',
@@ -244,7 +244,7 @@ class ColumnActionTest extends TestCase
                 ];
             }
         };
-        Livewire::test(\Okipa\LaravelTable\Livewire\Table::class, ['config' => $config::class])
+        Livewire::test(\JscDev\LaravelTable\Livewire\Table::class, ['config' => $config::class])
             ->call('init')
             ->assertSeeHtml([
                 '<th wire:key="cell-email-verified-at-' . $user->id . '" class="align-middle" scope="row">',

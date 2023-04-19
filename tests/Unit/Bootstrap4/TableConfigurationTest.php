@@ -4,9 +4,9 @@ namespace Tests\Unit\Bootstrap4;
 
 use Illuminate\Foundation\Auth\User;
 use Livewire\Livewire;
-use Okipa\LaravelTable\Abstracts\AbstractTableConfiguration;
-use Okipa\LaravelTable\Column;
-use Okipa\LaravelTable\Table;
+use JscDev\LaravelTable\Abstracts\AbstractTableConfiguration;
+use JscDev\LaravelTable\Column;
+use JscDev\LaravelTable\Table;
 
 class TableConfigurationTest extends \Tests\Unit\Bootstrap5\TableConfigurationTest
 {
@@ -27,7 +27,7 @@ class TableConfigurationTest extends \Tests\Unit\Bootstrap5\TableConfigurationTe
                 ];
             }
         };
-        Livewire::test(\Okipa\LaravelTable\Livewire\Table::class, ['config' => $config::class])
+        Livewire::test(\JscDev\LaravelTable\Livewire\Table::class, ['config' => $config::class])
             ->assertSeeHtmlInOrder([
                 '<div class="d-flex align-items-center py-3">',
                 '<div class="spinner-border text-dark mr-3" role="status">',

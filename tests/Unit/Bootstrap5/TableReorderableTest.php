@@ -7,10 +7,10 @@ use Illuminate\Database\Eloquent\Factories\Sequence;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Config;
 use Livewire\Livewire;
-use Okipa\LaravelTable\Abstracts\AbstractTableConfiguration;
-use Okipa\LaravelTable\Column;
-use Okipa\LaravelTable\Filters\RelationshipFilter;
-use Okipa\LaravelTable\Table;
+use JscDev\LaravelTable\Abstracts\AbstractTableConfiguration;
+use JscDev\LaravelTable\Column;
+use JscDev\LaravelTable\Filters\RelationshipFilter;
+use JscDev\LaravelTable\Table;
 use Tests\Models\Company;
 use Tests\Models\User;
 use Tests\Models\UserCategory;
@@ -40,7 +40,7 @@ class TableReorderableTest extends TestCase
                 ];
             }
         };
-        Livewire::test(\Okipa\LaravelTable\Livewire\Table::class, ['config' => $config::class])
+        Livewire::test(\JscDev\LaravelTable\Livewire\Table::class, ['config' => $config::class])
             ->call('init')
             ->assertSeeHtmlInOrder([
                 '<thead>',
@@ -85,7 +85,7 @@ class TableReorderableTest extends TestCase
                 ];
             }
         };
-        Livewire::test(\Okipa\LaravelTable\Livewire\Table::class, ['config' => $config::class])
+        Livewire::test(\JscDev\LaravelTable\Livewire\Table::class, ['config' => $config::class])
             ->call('init')
             ->assertSeeHtmlInOrder([
                 '<div class="alert alert-info" role="alert">',
@@ -178,7 +178,7 @@ class TableReorderableTest extends TestCase
             ['order' => 2, 'value' => 1],
             ['order' => 3, 'value' => 2],
         ];
-        Livewire::test(\Okipa\LaravelTable\Livewire\Table::class, ['config' => $config::class])
+        Livewire::test(\JscDev\LaravelTable\Livewire\Table::class, ['config' => $config::class])
             ->call('init')
             ->call('reorder', $reorderedList)
             ->assertEmitted('laraveltable:action:feedback', 'The list has been reordered.');
@@ -235,7 +235,7 @@ class TableReorderableTest extends TestCase
             ['order' => 3, 'value' => 5],
         ];
         Livewire::withQueryParams(['page' => 2])
-            ->test(\Okipa\LaravelTable\Livewire\Table::class, ['config' => $config::class])
+            ->test(\JscDev\LaravelTable\Livewire\Table::class, ['config' => $config::class])
             ->call('init')
             ->call('sortBy', 'position')
             ->call('sortBy', 'position')
@@ -308,7 +308,7 @@ class TableReorderableTest extends TestCase
             ['order' => 2, 'value' => 2],
             ['order' => 3, 'value' => 5],
         ];
-        Livewire::test(\Okipa\LaravelTable\Livewire\Table::class, ['config' => $config::class])
+        Livewire::test(\JscDev\LaravelTable\Livewire\Table::class, ['config' => $config::class])
             ->call('init')
             ->call('reorder', $reorderedList)
             ->assertEmitted('laraveltable:action:feedback', 'The list has been reordered.');
@@ -382,7 +382,7 @@ class TableReorderableTest extends TestCase
             ['order' => 2, 'value' => 2],
             ['order' => 3, 'value' => 5],
         ];
-        Livewire::test(\Okipa\LaravelTable\Livewire\Table::class, ['config' => $config::class])
+        Livewire::test(\JscDev\LaravelTable\Livewire\Table::class, ['config' => $config::class])
             ->call('init')
             ->set('searchBy', 'Name test 2')
             ->call('reorder', $reorderedList)
@@ -473,7 +473,7 @@ class TableReorderableTest extends TestCase
             ['order' => 3, 'value' => 14],
         ];
         Livewire::withQueryParams(['page' => 2])
-            ->test(\Okipa\LaravelTable\Livewire\Table::class, ['config' => $config::class])
+            ->test(\JscDev\LaravelTable\Livewire\Table::class, ['config' => $config::class])
             ->call('init')
             ->set('selectedFilters', [
                 'filter_relationship_owner' => $user2->id,
@@ -550,7 +550,7 @@ class TableReorderableTest extends TestCase
             ['order' => 2, 'value' => 1],
             ['order' => 3, 'value' => 2],
         ];
-        Livewire::test(\Okipa\LaravelTable\Livewire\Table::class, ['config' => $config::class])
+        Livewire::test(\JscDev\LaravelTable\Livewire\Table::class, ['config' => $config::class])
             ->call('init')
             ->call('reorder', $reorderedList)
             ->assertEmitted('laraveltable:action:feedback', 'The list has been reordered.');

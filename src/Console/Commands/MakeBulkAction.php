@@ -1,6 +1,6 @@
 <?php
 
-namespace Okipa\LaravelTable\Console\Commands;
+namespace JscDev\LaravelTable\Console\Commands;
 
 use Illuminate\Console\GeneratorCommand;
 

@@ -1,11 +1,11 @@
 <?php
 
-namespace Okipa\LaravelTable\BulkActions;
+namespace JscDev\LaravelTable\BulkActions;
 
 use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
 use Livewire\Component;
-use Okipa\LaravelTable\Abstracts\AbstractBulkAction;
+use JscDev\LaravelTable\Abstracts\AbstractBulkAction;
 
 class DeactivateBulkAction extends AbstractBulkAction
 {

@@ -5,14 +5,14 @@ namespace Tests\Unit\Bootstrap4;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Date;
 use Livewire\Livewire;
-use Okipa\LaravelTable\Abstracts\AbstractTableConfiguration;
-use Okipa\LaravelTable\BulkActions\ActivateBulkAction;
-use Okipa\LaravelTable\BulkActions\CancelEmailVerificationBulkAction;
-use Okipa\LaravelTable\BulkActions\DeactivateBulkAction;
-use Okipa\LaravelTable\BulkActions\DestroyBulkAction;
-use Okipa\LaravelTable\BulkActions\VerifyEmailBulkAction;
-use Okipa\LaravelTable\Column;
-use Okipa\LaravelTable\Table;
+use JscDev\LaravelTable\Abstracts\AbstractTableConfiguration;
+use JscDev\LaravelTable\BulkActions\ActivateBulkAction;
+use JscDev\LaravelTable\BulkActions\CancelEmailVerificationBulkAction;
+use JscDev\LaravelTable\BulkActions\DeactivateBulkAction;
+use JscDev\LaravelTable\BulkActions\DestroyBulkAction;
+use JscDev\LaravelTable\BulkActions\VerifyEmailBulkAction;
+use JscDev\LaravelTable\Column;
+use JscDev\LaravelTable\Table;
 use Tests\Models\User;
 
 class TableBulkActionsTest extends \Tests\Unit\Bootstrap5\TableBulkActionsTest
@@ -35,7 +35,7 @@ class TableBulkActionsTest extends \Tests\Unit\Bootstrap5\TableBulkActionsTest
                 ];
             }
         };
-        Livewire::test(\Okipa\LaravelTable\Livewire\Table::class, ['config' => $config::class])
+        Livewire::test(\JscDev\LaravelTable\Livewire\Table::class, ['config' => $config::class])
             ->call('init')
             ->assertDontSeeHtml([
                 '<td class="px-0" colspan="',
@@ -78,7 +78,7 @@ class TableBulkActionsTest extends \Tests\Unit\Bootstrap5\TableBulkActionsTest
                 ];
             }
         };
-        $component = Livewire::test(\Okipa\LaravelTable\Livewire\Table::class, [
+        $component = Livewire::test(\JscDev\LaravelTable\Livewire\Table::class, [
             'config' => $config::class,
             'selectedModelKeys' => [(string) $users->first()->id],
         ])
@@ -290,7 +290,7 @@ class TableBulkActionsTest extends \Tests\Unit\Bootstrap5\TableBulkActionsTest
             }
         };
         Livewire::actingAs($user1)
-            ->test(\Okipa\LaravelTable\Livewire\Table::class, [
+            ->test(\JscDev\LaravelTable\Livewire\Table::class, [
                 'config' => $config::class,
                 'selectedModelKeys' => User::pluck('id')->map(fn (int $id) => (string) $id)->toArray(),
             ])

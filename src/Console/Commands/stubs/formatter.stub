@@ -3,7 +3,7 @@
 namespace DummyNamespace;
 
 use Illuminate\Database\Eloquent\Model;
-use Okipa\LaravelTable\Abstracts\AbstractFormatter;
+use JscDev\LaravelTable\Abstracts\AbstractFormatter;
 
 class DummyClass extends AbstractFormatter
 {

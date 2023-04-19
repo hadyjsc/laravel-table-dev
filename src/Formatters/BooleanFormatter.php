@@ -1,9 +1,9 @@
 <?php
 
-namespace Okipa\LaravelTable\Formatters;
+namespace JscDev\LaravelTable\Formatters;
 
 use Illuminate\Database\Eloquent\Model;
-use Okipa\LaravelTable\Abstracts\AbstractFormatter;
+use JscDev\LaravelTable\Abstracts\AbstractFormatter;
 
 class BooleanFormatter extends AbstractFormatter
 {

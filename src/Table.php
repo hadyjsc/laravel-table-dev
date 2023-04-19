@@ -1,6 +1,6 @@
 <?php
 
-namespace Okipa\LaravelTable;
+namespace JscDev\LaravelTable;
 
 use Closure;
 use Illuminate\Database\Eloquent\Builder;
@@ -8,10 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
-use Okipa\LaravelTable\Abstracts\AbstractFilter;
-use Okipa\LaravelTable\Abstracts\AbstractHeadAction;
-use Okipa\LaravelTable\Abstracts\AbstractRowAction;
-use Okipa\LaravelTable\Exceptions\NoColumnsDeclared;
+use JscDev\LaravelTable\Abstracts\AbstractFilter;
+use JscDev\LaravelTable\Abstracts\AbstractDatePicker;
+use JscDev\LaravelTable\Abstracts\AbstractHeadAction;
+use JscDev\LaravelTable\Abstracts\AbstractRowAction;
+use JscDev\LaravelTable\Exceptions\NoColumnsDeclared;
 
 /** @SuppressWarnings(PHPMD.ExcessiveClassComplexity) */
 class Table
@@ -27,6 +28,8 @@ class Table
     protected array $numberOfRowsPerPageOptions;
 
     protected array $filters = [];
+
+    protected array $datePickers = [];
 
     protected AbstractHeadAction|null $headAction = null;
 
@@ -71,7 +74,7 @@ class Table
         return $this;
     }
 
-    /** @throws \Okipa\LaravelTable\Exceptions\InvalidColumnSortDirection */
+    /** @throws \JscDev\LaravelTable\Exceptions\InvalidColumnSortDirection */
     public function reorderable(string $attribute, string $title = null, string $sortDirByDefault = 'asc'): self
     {
         $orderColumn = Column::make($attribute)->sortable()->sortByDefault($sortDirByDefault);
@@ -88,7 +91,7 @@ class Table
         return new self();
     }
 
-    /** @throws \Okipa\LaravelTable\Exceptions\NoColumnsDeclared */
+    /** @throws \JscDev\LaravelTable\Exceptions\NoColumnsDeclared */
     public function prependReorderColumn(): void
     {
         $orderColumn = $this->getOrderColumn();
@@ -102,7 +105,7 @@ class Table
         return $this->orderColumn;
     }
 
-    /** @throws \Okipa\LaravelTable\Exceptions\NoColumnsDeclared */
+    /** @throws \JscDev\LaravelTable\Exceptions\NoColumnsDeclared */
     public function getColumns(): Collection
     {
         if ($this->columns->isEmpty()) {
@@ -146,9 +149,10 @@ class Table
         return $this;
     }
 
-    /** @throws \Okipa\LaravelTable\Exceptions\NoColumnsDeclared */
+    /** @throws \JscDev\LaravelTable\Exceptions\NoColumnsDeclared */
     public function prepareQuery(
         array $filterClosures,
+        array $datePickerClosures,
         string|null $searchBy,
         string|Closure|null $sortBy,
         string|null $sortDir
@@ -163,6 +167,14 @@ class Table
             $query->where(function (Builder $subFiltersQuery) use ($filterClosures) {
                 foreach ($filterClosures as $filterClosure) {
                     $filterClosure($subFiltersQuery);
+                }
+            });
+        }
+        // Date Picker
+        if ($datePickerClosures) {
+            $query->where(function (Builder $subFiltersQuery) use ($datePickerClosures) {
+                foreach ($datePickerClosures as $datePickerClosure) {
+                    $datePickerClosure($subFiltersQuery);
                 }
             });
         }
@@ -194,7 +206,7 @@ class Table
         return $query;
     }
 
-    /** @throws \Okipa\LaravelTable\Exceptions\NoColumnsDeclared */
+    /** @throws \JscDev\LaravelTable\Exceptions\NoColumnsDeclared */
     protected function getSearchableColumns(): Collection
     {
         return $this->getColumns()->filter(fn (Column $column) => $column->isSearchable());
@@ -264,6 +276,14 @@ class Table
         return $this;
     }
 
+    //hadyjsc
+    public function datePickers(array $datePickers): self
+    {
+        $this->datePickers = $datePickers;
+
+        return $this;
+    }
+
     public function headAction(AbstractHeadAction $headAction): self
     {
         $this->headAction = $headAction;
@@ -302,7 +322,7 @@ class Table
         $this->results = collect($results);
     }
 
-    /** @throws \Okipa\LaravelTable\Exceptions\NoColumnsDeclared */
+    /** @throws \JscDev\LaravelTable\Exceptions\NoColumnsDeclared */
     public function getColumnSortedByDefault(): Column|null
     {
         $sortableColumns = $this->getColumns()
@@ -318,7 +338,7 @@ class Table
         return $columnSortedByDefault;
     }
 
-    /** @throws \Okipa\LaravelTable\Exceptions\NoColumnsDeclared */
+    /** @throws \JscDev\LaravelTable\Exceptions\NoColumnsDeclared */
     public function getColumn(string $attribute): Column
     {
         return $this->getColumns()->filter(fn (Column $column) => $column->getAttribute() === $attribute)->first();
@@ -363,6 +383,34 @@ class Table
             }
             $filterArray = AbstractFilter::retrieve($filtersArray, $identifier);
             $filterInstance = AbstractFilter::make($filterArray);
+            $filterClosures[$identifier] = static fn (Builder $query) => $filterInstance->filter($query, $value);
+        }
+
+        return $filterClosures;
+    }
+
+    //hadyjsc
+    public function generateDatePicker(): array
+    {
+        return collect($this->datePickers)->map(function (AbstractDatePicker $filter) {
+            $filter->setup($this->model->getKeyName());
+
+            return json_decode(json_encode(
+                $filter,
+                JSON_THROW_ON_ERROR
+            ), true, 512, JSON_THROW_ON_ERROR);
+        })->toArray();
+    }
+
+    public function getDatePickerClosures(array $datePickers, array $selectedFilters): array
+    {
+        $filterClosures = [];
+        foreach ($selectedFilters as $identifier => $value) {
+            if ($value === '' || $value === []) {
+                continue;
+            }
+            $dateArray = AbstractDatePicker::retrieve($datePickers, $identifier);
+            $filterInstance = AbstractDatePicker::make($dateArray);
             $filterClosures[$identifier] = static fn (Builder $query) => $filterInstance->filter($query, $value);
         }
 
@@ -460,7 +508,7 @@ class Table
     }
 
     /**
-     * @throws \Okipa\LaravelTable\Exceptions\NoColumnsDeclared
+     * @throws \JscDev\LaravelTable\Exceptions\NoColumnsDeclared
      * @throws \JsonException
      */
     public function generateColumnActionsArray(): array
@@ -486,7 +534,7 @@ class Table
         return $tableColumnActionsArray;
     }
 
-    /** @throws \Okipa\LaravelTable\Exceptions\NoColumnsDeclared */
+    /** @throws \JscDev\LaravelTable\Exceptions\NoColumnsDeclared */
     public function getSearchableLabels(): string
     {
         return $this->getSearchableColumns()

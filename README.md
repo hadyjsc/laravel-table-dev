@@ -1,16 +1,16 @@
 ![Laravel Table](/docs/laravel-table.png)
 <p style="text-align: center">
-    <a href="https://github.com/Okipa/laravel-table/releases" title="Latest Stable Version">
-        <img src="https://img.shields.io/github/release/Okipa/laravel-table.svg?style=flat-square" alt="Latest Stable Version">
+    <a href="https://github.com/JscDev/laravel-table/releases" title="Latest Stable Version">
+        <img src="https://img.shields.io/github/release/JscDev/laravel-table.svg?style=flat-square" alt="Latest Stable Version">
     </a>
-    <a href="https://packagist.org/packages/Okipa/laravel-table" title="Total Downloads">
-        <img src="https://img.shields.io/packagist/dt/okipa/laravel-table.svg?style=flat-square" alt="Total Downloads">
+    <a href="https://packagist.org/packages/JscDev/laravel-table" title="Total Downloads">
+        <img src="https://img.shields.io/packagist/dt/JscDev/laravel-table.svg?style=flat-square" alt="Total Downloads">
     </a>
-    <a href="https://github.com/Okipa/laravel-table/actions" title="Build Status">
-        <img src="https://github.com/Okipa/laravel-table/workflows/CI/badge.svg" alt="Build Status">
+    <a href="https://github.com/JscDev/laravel-table/actions" title="Build Status">
+        <img src="https://github.com/JscDev/laravel-table/workflows/CI/badge.svg" alt="Build Status">
     </a>
-    <a href="https://coveralls.io/github/Okipa/laravel-table?branch=master" title="Coverage Status">
-        <img src="https://coveralls.io/repos/github/Okipa/laravel-table/badge.svg?branch=master" alt="Coverage Status">
+    <a href="https://coveralls.io/github/JscDev/laravel-table?branch=master" title="Coverage Status">
+        <img src="https://coveralls.io/repos/github/JscDev/laravel-table/badge.svg?branch=master" alt="Coverage Status">
     </a>
     <a href="/LICENSE.md" title="License: MIT">
         <img src="https://img.shields.io/badge/License-MIT-blue.svg" alt="License: MIT">
@@ -64,10 +64,10 @@ Configure your table in the `UsersTable` generated class, which can be found in 
 namespace App\Tables;
 
 use App\Models\User;
-use Okipa\LaravelTable\Table;
-use Okipa\LaravelTable\Column;
+use JscDev\LaravelTable\Table;
+use JscDev\LaravelTable\Column;
 use Okipe\LaravelTable\Formatters\Date;
-use Okipa\LaravelTable\Abstracts\AbstractTableConfiguration;
+use JscDev\LaravelTable\Abstracts\AbstractTableConfiguration;
 
 class UsersTable extends AbstractTableConfiguration
 {
@@ -140,7 +140,7 @@ And display it in a view:
 * Install the package with composer:
 
 ```bash
-composer require okipa/laravel-table
+composer require JscDev/laravel-table
 ```
 
 This package uses [Livewire](https://laravel-livewire.com) under the hood and its installation is required.
@@ -243,8 +243,8 @@ You should then declare the passed attributes as `public` attributes your table 
 namespace App\Tables;
 
 use App\Models\User;
-use Okipa\LaravelTable\Table;
-use Okipa\LaravelTable\Abstracts\AbstractTableConfiguration;
+use JscDev\LaravelTable\Table;
+use JscDev\LaravelTable\Abstracts\AbstractTableConfiguration;
 
 class UsersTable extends AbstractTableConfiguration
 {
@@ -263,8 +263,8 @@ To generate a table from an Eloquent model, you'll just have to call the `model`
 namespace App\Tables;
 
 use App\Models\User;
-use Okipa\LaravelTable\Table;
-use Okipa\LaravelTable\Abstracts\AbstractTableConfiguration;
+use JscDev\LaravelTable\Table;
+use JscDev\LaravelTable\Abstracts\AbstractTableConfiguration;
 
 class UsersTable extends AbstractTableConfiguration
 {
@@ -298,9 +298,9 @@ This closure will allow you to manipulate a `\Illuminate\Database\Eloquent\Build
 namespace App\Tables;
 
 use App\Models\User;
-use Okipa\LaravelTable\Table;
+use JscDev\LaravelTable\Table;
 use Illuminate\Database\Eloquent\Builder;
-use Okipa\LaravelTable\Abstracts\AbstractTableConfiguration;
+use JscDev\LaravelTable\Abstracts\AbstractTableConfiguration;
 
 class UsersTable extends AbstractTableConfiguration
 {
@@ -323,8 +323,8 @@ You have two ways to allow or disallow users to choose the number of rows that w
 namespace App\Tables;
 
 use App\Models\User;
-use Okipa\LaravelTable\Table;
-use Okipa\LaravelTable\Abstracts\AbstractTableConfiguration;
+use JscDev\LaravelTable\Table;
+use JscDev\LaravelTable\Abstracts\AbstractTableConfiguration;
 
 class UsersTable extends AbstractTableConfiguration
 {
@@ -347,8 +347,8 @@ The first available option will be automatically selected and applied on table i
 namespace App\Tables;
 
 use App\Models\User;
-use Okipa\LaravelTable\Table;
-use Okipa\LaravelTable\Abstracts\AbstractTableConfiguration;
+use JscDev\LaravelTable\Table;
+use JscDev\LaravelTable\Abstracts\AbstractTableConfiguration;
 
 class UsersTable extends AbstractTableConfiguration
 {
@@ -376,8 +376,8 @@ This closure will allow you to manipulate a `Illuminate\Database\Eloquent $model
 namespace App\Tables;
 
 use App\Models\User;
-use Okipa\LaravelTable\Table;
-use Okipa\LaravelTable\Abstracts\AbstractTableConfiguration;
+use JscDev\LaravelTable\Table;
+use JscDev\LaravelTable\Abstracts\AbstractTableConfiguration;
 
 class UsersTable extends AbstractTableConfiguration
 {
@@ -418,12 +418,12 @@ To use them, you'll have to pass an array to the `filters` method, containing th
 namespace App\Tables;
 
 use App\Models\User;
-use Okipa\LaravelTable\Table;
-use Okipa\LaravelTable\Filters\NullFilter;
-use Okipa\LaravelTable\Filters\ValueFilter;
-use Okipa\LaravelTable\Filters\BooleanFilter;
-use Okipa\LaravelTable\Filters\RelationshipFilter;
-use Okipa\LaravelTable\Abstracts\AbstractTableConfiguration;
+use JscDev\LaravelTable\Table;
+use JscDev\LaravelTable\Filters\NullFilter;
+use JscDev\LaravelTable\Filters\ValueFilter;
+use JscDev\LaravelTable\Filters\BooleanFilter;
+use JscDev\LaravelTable\Filters\RelationshipFilter;
+use JscDev\LaravelTable\Abstracts\AbstractTableConfiguration;
 
 class UsersTable extends AbstractTableConfiguration
 {
@@ -451,9 +451,9 @@ You will now be able to use your new filter in your tables.
 namespace App\Tables;
 
 use App\Models\User;
-use Okipa\LaravelTable\Table;
+use JscDev\LaravelTable\Table;
 use App\Tables\Filters\MyNewFilter;
-use Okipa\LaravelTable\Abstracts\AbstractTableConfiguration;
+use JscDev\LaravelTable\Abstracts\AbstractTableConfiguration;
 
 class UsersTable extends AbstractTableConfiguration
 {
@@ -485,16 +485,16 @@ This package provides the following built-in head actions:
 To use one of them, you'll have to pass an instance of it to the `headAction` method.
 
 You'll be able to chain the following method to your head action:
-* `when(bool $condition): Okipa\LaravelTable\Abstracts\AbstractHeadAction`
+* `when(bool $condition): JscDev\LaravelTable\Abstracts\AbstractHeadAction`
     * Determines whether the head action should be enabled
 
 ```php
 namespace App\Tables;
 
 use App\Models\User;
-use Okipa\LaravelTable\Table;
-use Okipa\LaravelTable\HeadActions\AddHeadAction;
-use Okipa\LaravelTable\Abstracts\AbstractTableConfiguration;
+use JscDev\LaravelTable\Table;
+use JscDev\LaravelTable\HeadActions\AddHeadAction;
+use JscDev\LaravelTable\Abstracts\AbstractTableConfiguration;
 
 class UsersTable extends AbstractTableConfiguration
 {
@@ -518,9 +518,9 @@ You will now be able to use your new head action in your tables.
 namespace App\Tables;
 
 use App\Models\User;
-use Okipa\LaravelTable\Table;
+use JscDev\LaravelTable\Table;
 use App\Tables\HeadActions\MyNewHeadAction;
-use Okipa\LaravelTable\Abstracts\AbstractTableConfiguration;
+use JscDev\LaravelTable\Abstracts\AbstractTableConfiguration;
 
 class UsersTable extends AbstractTableConfiguration
 {
@@ -560,24 +560,24 @@ This package provides the built-in following bulk actions:
 To use them, you'll have to pass a closure parameter to the `bulkActions` method. This closure will allow you to manipulate a `Illuminate\Database\Eloquent $model` argument and has to return an array containing bulk action instances.
 
 You'll be able to chain the following methods to your bulk actions:
-* `when(bool $condition): Okipa\LaravelTable\Abstracts\AbstractBulkAction`
+* `when(bool $condition): JscDev\LaravelTable\Abstracts\AbstractBulkAction`
     * Determines whether the bulk action should be enabled on the table rows
-* `confirmationQuestion(string|false $confirmationQuestion): Okipa\LaravelTable\Abstracts\AbstractBulkAction`
+* `confirmationQuestion(string|false $confirmationQuestion): JscDev\LaravelTable\Abstracts\AbstractBulkAction`
     * Overrides the default action confirmation message
-* `feedbackMessage(string|false $feedbackMessage): Okipa\LaravelTable\Abstracts\AbstractBulkAction`:
+* `feedbackMessage(string|false $feedbackMessage): JscDev\LaravelTable\Abstracts\AbstractBulkAction`:
     * Overrides the default action feedback message
 
 ```php
 namespace App\Tables;
 
 use App\Models\User;
-use Okipa\LaravelTable\Table;
-use Okipa\LaravelTable\BulkActions\DestroyBulkAction;
-use Okipa\LaravelTable\BulkActions\ActivateBulkAction;
-use Okipa\LaravelTable\BulkActions\DeactivateBulkAction;
-use Okipa\LaravelTable\BulkActions\VerifyEmailBulkAction;
-use Okipa\LaravelTable\BulkActions\CancelEmailVerificationBulkAction;
-use Okipa\LaravelTable\Abstracts\AbstractTableConfiguration;
+use JscDev\LaravelTable\Table;
+use JscDev\LaravelTable\BulkActions\DestroyBulkAction;
+use JscDev\LaravelTable\BulkActions\ActivateBulkAction;
+use JscDev\LaravelTable\BulkActions\DeactivateBulkAction;
+use JscDev\LaravelTable\BulkActions\VerifyEmailBulkAction;
+use JscDev\LaravelTable\BulkActions\CancelEmailVerificationBulkAction;
+use JscDev\LaravelTable\Abstracts\AbstractTableConfiguration;
 
 class UsersTable extends AbstractTableConfiguration
 {
@@ -614,9 +614,9 @@ You will now be able to use your new bulk action in your tables.
 namespace App\Tables;
 
 use App\Models\User;
-use Okipa\LaravelTable\Table;
+use JscDev\LaravelTable\Table;
 use App\Tables\BulkActions\MyNewBulkAction;
-use Okipa\LaravelTable\Abstracts\AbstractTableConfiguration;
+use JscDev\LaravelTable\Abstracts\AbstractTableConfiguration;
 
 class UsersTable extends AbstractTableConfiguration
 {
@@ -660,11 +660,11 @@ You'll be able to chain the same methods as for a bulk action => [See bulk actio
 namespace App\Tables;
 
 use App\Models\User;
-use Okipa\LaravelTable\Table;
-use Okipa\LaravelTable\RowActions\EditRowAction;
-use Okipa\LaravelTable\RowActions\ShowRowAction;
-use Okipa\LaravelTable\RowActions\DestroyRowAction;
-use Okipa\LaravelTable\Abstracts\AbstractTableConfiguration;
+use JscDev\LaravelTable\Table;
+use JscDev\LaravelTable\RowActions\EditRowAction;
+use JscDev\LaravelTable\RowActions\ShowRowAction;
+use JscDev\LaravelTable\RowActions\DestroyRowAction;
+use JscDev\LaravelTable\Abstracts\AbstractTableConfiguration;
 
 class UsersTable extends AbstractTableConfiguration
 {
@@ -699,9 +699,9 @@ You will now be able to use your new row action in your tables.
 namespace App\Tables;
 
 use App\Models\User;
-use Okipa\LaravelTable\Table;
+use JscDev\LaravelTable\Table;
 use App\Tables\RowActions\MyNewRowAction;
-use Okipa\LaravelTable\Abstracts\AbstractTableConfiguration;
+use JscDev\LaravelTable\Abstracts\AbstractTableConfiguration;
 
 class UsersTable extends AbstractTableConfiguration
 {
@@ -734,9 +734,9 @@ If you need to, you may use the `title` method that will await a `string $title`
 namespace App\Tables;
 
 use App\Models\User;
-use Okipa\LaravelTable\Table;
-use Okipa\LaravelTable\Column;
-use Okipa\LaravelTable\Abstracts\AbstractTableConfiguration;
+use JscDev\LaravelTable\Table;
+use JscDev\LaravelTable\Column;
+use JscDev\LaravelTable\Abstracts\AbstractTableConfiguration;
 
 class UsersTable extends AbstractTableConfiguration
 {
@@ -769,9 +769,9 @@ This closure will allow you to manipulate a `Illuminate\Database\Eloquent $model
 namespace App\Tables;
 
 use App\Models\User;
-use Okipa\LaravelTable\Table;
-use Okipa\LaravelTable\Column;
-use Okipa\LaravelTable\Abstracts\AbstractTableConfiguration;
+use JscDev\LaravelTable\Table;
+use JscDev\LaravelTable\Column;
+use JscDev\LaravelTable\Abstracts\AbstractTableConfiguration;
 
 class UsersTable extends AbstractTableConfiguration
 {
@@ -803,10 +803,10 @@ You'll be able to reuse this formatter in your tables.
 namespace App\Tables;
 
 use App\Models\User;
-use Okipa\LaravelTable\Table;
-use Okipa\LaravelTable\Column;
+use JscDev\LaravelTable\Table;
+use JscDev\LaravelTable\Column;
 use App\Tables\Formatters\NewFormatter;
-use Okipa\LaravelTable\Abstracts\AbstractTableConfiguration;
+use JscDev\LaravelTable\Abstracts\AbstractTableConfiguration;
 
 class UsersTable extends AbstractTableConfiguration
 {
@@ -857,10 +857,10 @@ You'll be able to chain the same methods as for a bulk action => [See bulk actio
 namespace App\Tables;
 
 use App\Models\User;
-use Okipa\LaravelTable\Table;
-use Okipa\LaravelTable\ColumnActions\ToggleBooleanColumnAction;
-use Okipa\LaravelTable\Abstracts\AbstractTableConfiguration;
-use Okipa\LaravelTable\ColumnActions\ToggleBooleanColumnAction;
+use JscDev\LaravelTable\Table;
+use JscDev\LaravelTable\ColumnActions\ToggleBooleanColumnAction;
+use JscDev\LaravelTable\Abstracts\AbstractTableConfiguration;
+use JscDev\LaravelTable\ColumnActions\ToggleBooleanColumnAction;
 
 class UsersTable extends AbstractTableConfiguration
 {
@@ -894,9 +894,9 @@ You will now be able to use your new column action in your tables.
 namespace App\Tables;
 
 use App\Models\User;
-use Okipa\LaravelTable\Table;
+use JscDev\LaravelTable\Table;
 use App\Tables\ColumnActions\MyNewColumnAction;
-use Okipa\LaravelTable\Abstracts\AbstractTableConfiguration;
+use JscDev\LaravelTable\Abstracts\AbstractTableConfiguration;
 
 class UsersTable extends AbstractTableConfiguration
 {
@@ -1080,8 +1080,8 @@ Activating this feature will:
 namespace App\Tables;
 
 use App\Models\User;
-use Okipa\LaravelTable\Table;
-use Okipa\LaravelTable\Abstracts\AbstractTableConfiguration;
+use JscDev\LaravelTable\Table;
+use JscDev\LaravelTable\Abstracts\AbstractTableConfiguration;
 
 class UsersTable extends AbstractTableConfiguration
 {
@@ -1113,12 +1113,12 @@ Results should be declared this way:
 namespace App\Tables;
 
 use App\Models\User;
-use Okipa\LaravelTable\Table;
-use Okipa\LaravelTable\Column;
-use Okipa\LaravelTable\Result;
+use JscDev\LaravelTable\Table;
+use JscDev\LaravelTable\Column;
+use JscDev\LaravelTable\Result;
 use Illuminate\Support\Collection;
 use Illuminate\Database\Query\Builder;
-use Okipa\LaravelTable\Abstracts\AbstractTableConfiguration;
+use JscDev\LaravelTable\Abstracts\AbstractTableConfiguration;
 
 class UsersTable extends AbstractTableConfiguration
 {
@@ -1218,9 +1218,9 @@ You can do it using the table `emitEventsOnLoad` method, that will await an arra
 namespace App\Tables;
 
 use App\Models\User;
-use Okipa\LaravelTable\Table;
+use JscDev\LaravelTable\Table;
 use Illuminate\Database\Eloquent\Builder;
-use Okipa\LaravelTable\Abstracts\AbstractTableConfiguration;
+use JscDev\LaravelTable\Abstracts\AbstractTableConfiguration;
 
 class UsersTable extends AbstractTableConfiguration
 {
@@ -1259,7 +1259,7 @@ Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
 
 ## Credits
 
-* [Arthur LORENT](https://github.com/okipa)
+* [Arthur LORENT](https://github.com/JscDev)
 * [All Contributors](../../contributors)
 
 ## License

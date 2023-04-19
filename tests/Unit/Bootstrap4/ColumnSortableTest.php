@@ -5,9 +5,9 @@ namespace Tests\Unit\Bootstrap4;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Config;
 use Livewire\Livewire;
-use Okipa\LaravelTable\Abstracts\AbstractTableConfiguration;
-use Okipa\LaravelTable\Column;
-use Okipa\LaravelTable\Table;
+use JscDev\LaravelTable\Abstracts\AbstractTableConfiguration;
+use JscDev\LaravelTable\Column;
+use JscDev\LaravelTable\Table;
 use Tests\Models\Company;
 use Tests\Models\User;
 
@@ -34,7 +34,7 @@ class ColumnSortableTest extends \Tests\Unit\Bootstrap5\ColumnSortableTest
                 ];
             }
         };
-        Livewire::test(\Okipa\LaravelTable\Livewire\Table::class, ['config' => $config::class])
+        Livewire::test(\JscDev\LaravelTable\Livewire\Table::class, ['config' => $config::class])
             ->call('init')
             ->assertSet('sortBy', 'id')
             ->assertSet('sortDir', 'asc')
@@ -92,7 +92,7 @@ class ColumnSortableTest extends \Tests\Unit\Bootstrap5\ColumnSortableTest
             }
         };
         $users = $users->sortBy('name');
-        Livewire::test(\Okipa\LaravelTable\Livewire\Table::class, ['config' => $config::class])
+        Livewire::test(\JscDev\LaravelTable\Livewire\Table::class, ['config' => $config::class])
             ->call('init')
             ->assertSet('sortBy', 'name')
             ->assertSet('sortDir', 'asc')
@@ -150,7 +150,7 @@ class ColumnSortableTest extends \Tests\Unit\Bootstrap5\ColumnSortableTest
             }
         };
         $users = $users->sortByDesc('name');
-        Livewire::test(\Okipa\LaravelTable\Livewire\Table::class, ['config' => $config::class])
+        Livewire::test(\JscDev\LaravelTable\Livewire\Table::class, ['config' => $config::class])
             ->call('init')
             ->assertSet('sortBy', 'name')
             ->assertSet('sortDir', 'desc')
@@ -209,7 +209,7 @@ class ColumnSortableTest extends \Tests\Unit\Bootstrap5\ColumnSortableTest
             }
         };
         $users = $users->sortBy('name');
-        $component = Livewire::test(\Okipa\LaravelTable\Livewire\Table::class, ['config' => $config::class])
+        $component = Livewire::test(\JscDev\LaravelTable\Livewire\Table::class, ['config' => $config::class])
             ->call('init')
             ->assertSet('sortBy', 'id')
             ->assertSet('sortDir', 'asc')
@@ -305,7 +305,7 @@ class ColumnSortableTest extends \Tests\Unit\Bootstrap5\ColumnSortableTest
             }
         };
         $users = $users->sortBy('name');
-        Livewire::test(\Okipa\LaravelTable\Livewire\Table::class, ['config' => $config::class])
+        Livewire::test(\JscDev\LaravelTable\Livewire\Table::class, ['config' => $config::class])
             ->call('init')
             ->assertSet('sortBy', 'id')
             ->assertSet('sortDir', 'asc')
@@ -373,7 +373,7 @@ class ColumnSortableTest extends \Tests\Unit\Bootstrap5\ColumnSortableTest
             }
         };
         $users = $users->loadCount('companies')->sortBy('companies_count');
-        $component = Livewire::test(\Okipa\LaravelTable\Livewire\Table::class, ['config' => $config::class])
+        $component = Livewire::test(\JscDev\LaravelTable\Livewire\Table::class, ['config' => $config::class])
             ->call('init')
             ->assertSet('sortBy', 'companies_count')
             ->assertSet('sortDir', 'asc')

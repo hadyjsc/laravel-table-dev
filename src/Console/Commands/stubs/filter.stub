@@ -3,7 +3,7 @@
 namespace DummyNamespace;
 
 use Illuminate\Database\Eloquent\Builder;
-use Okipa\LaravelTable\Abstracts\AbstractFilter;
+use JscDev\LaravelTable\Abstracts\AbstractFilter;
 
 class DummyClass extends AbstractFilter
 {

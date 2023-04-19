@@ -62,7 +62,7 @@ As so, you should search for all `$table->list` use in your code and make the ne
 
 ## See all changes
 
-See all change with the [comparison tool](https://github.com/Okipa/laravel-table/compare/1.5.0...2.0.0).
+See all change with the [comparison tool](https://github.com/JscDev/laravel-table/compare/1.5.0...2.0.0).
 
 ## Undocumented changes
 

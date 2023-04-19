@@ -7,12 +7,12 @@ use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Str;
 use Livewire\Livewire;
-use Okipa\LaravelTable\Abstracts\AbstractTableConfiguration;
-use Okipa\LaravelTable\Column;
-use Okipa\LaravelTable\Formatters\BooleanFormatter;
-use Okipa\LaravelTable\Formatters\DateFormatter;
-use Okipa\LaravelTable\Formatters\StrLimitFormatter;
-use Okipa\LaravelTable\Table;
+use JscDev\LaravelTable\Abstracts\AbstractTableConfiguration;
+use JscDev\LaravelTable\Column;
+use JscDev\LaravelTable\Formatters\BooleanFormatter;
+use JscDev\LaravelTable\Formatters\DateFormatter;
+use JscDev\LaravelTable\Formatters\StrLimitFormatter;
+use JscDev\LaravelTable\Table;
 use Tests\Models\Company;
 use Tests\Models\User;
 use Tests\TestCase;
@@ -41,7 +41,7 @@ class ColumnFormatTest extends TestCase
                 ];
             }
         };
-        Livewire::test(\Okipa\LaravelTable\Livewire\Table::class, ['config' => $config::class])
+        Livewire::test(\JscDev\LaravelTable\Livewire\Table::class, ['config' => $config::class])
             ->call('init')
             ->assertSeeHtmlInOrder([
                 '<tbody>',
@@ -76,7 +76,7 @@ class ColumnFormatTest extends TestCase
                 ];
             }
         };
-        Livewire::test(\Okipa\LaravelTable\Livewire\Table::class, ['config' => $config::class])
+        Livewire::test(\JscDev\LaravelTable\Livewire\Table::class, ['config' => $config::class])
             ->call('init')
             ->assertSeeHtmlInOrder([
                 '<tbody>',
@@ -114,7 +114,7 @@ class ColumnFormatTest extends TestCase
                 ];
             }
         };
-        Livewire::test(\Okipa\LaravelTable\Livewire\Table::class, ['config' => $config::class])
+        Livewire::test(\JscDev\LaravelTable\Livewire\Table::class, ['config' => $config::class])
             ->call('init')
             ->assertSeeHtmlInOrder([
                 '<tbody>',

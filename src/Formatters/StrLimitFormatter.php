@@ -1,10 +1,10 @@
 <?php
 
-namespace Okipa\LaravelTable\Formatters;
+namespace JscDev\LaravelTable\Formatters;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
-use Okipa\LaravelTable\Abstracts\AbstractFormatter;
+use JscDev\LaravelTable\Abstracts\AbstractFormatter;
 
 class StrLimitFormatter extends AbstractFormatter
 {

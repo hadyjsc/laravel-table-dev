@@ -1,6 +1,6 @@
 <?php
 
-namespace Okipa\LaravelTable\Abstracts;
+namespace JscDev\LaravelTable\Abstracts;
 
 use Illuminate\Contracts\View\View;
 use Illuminate\Database\Eloquent\Model;

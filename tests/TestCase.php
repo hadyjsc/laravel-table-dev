@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Str;
 use Illuminate\Testing\Constraints\SeeInOrder;
 use Livewire\LivewireServiceProvider;
-use Okipa\LaravelTable\LaravelTableServiceProvider;
+use JscDev\LaravelTable\LaravelTableServiceProvider;
 use Orchestra\Testbench\TestCase as Orchestra;
 
 class TestCase extends Orchestra

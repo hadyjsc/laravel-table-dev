@@ -4,7 +4,7 @@ namespace DummyNamespace;
 
 use Livewire\Component;
 use Illuminate\Support\Collection;
-use Okipa\LaravelTable\Abstracts\AbstractBulkAction;
+use JscDev\LaravelTable\Abstracts\AbstractBulkAction;
 
 class DummyClass extends AbstractBulkAction
 {

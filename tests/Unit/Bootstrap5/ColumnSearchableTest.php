@@ -7,9 +7,9 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Str;
 use Livewire\Livewire;
-use Okipa\LaravelTable\Abstracts\AbstractTableConfiguration;
-use Okipa\LaravelTable\Column;
-use Okipa\LaravelTable\Table;
+use JscDev\LaravelTable\Abstracts\AbstractTableConfiguration;
+use JscDev\LaravelTable\Column;
+use JscDev\LaravelTable\Table;
 use PDOException;
 use Tests\Models\Company;
 use Tests\Models\User;
@@ -36,7 +36,7 @@ class ColumnSearchableTest extends TestCase
                 ];
             }
         };
-        Livewire::test(\Okipa\LaravelTable\Livewire\Table::class, ['config' => $config::class])
+        Livewire::test(\JscDev\LaravelTable\Livewire\Table::class, ['config' => $config::class])
             ->call('init')
             ->assertDontSeeHtml('<form wire:submit.prevent="$refresh">');
     }
@@ -62,7 +62,7 @@ class ColumnSearchableTest extends TestCase
                 ];
             }
         };
-        Livewire::test(\Okipa\LaravelTable\Livewire\Table::class, ['config' => $config::class])
+        Livewire::test(\JscDev\LaravelTable\Livewire\Table::class, ['config' => $config::class])
             ->call('init')
             ->assertSeeHtmlInOrder([
                 '<thead>',
@@ -119,7 +119,7 @@ class ColumnSearchableTest extends TestCase
                 ];
             }
         };
-        Livewire::test(\Okipa\LaravelTable\Livewire\Table::class, ['config' => $config::class])
+        Livewire::test(\JscDev\LaravelTable\Livewire\Table::class, ['config' => $config::class])
             ->call('init')
             ->assertSet('searchBy', '')
             ->assertSeeHtmlInOrder([
@@ -177,7 +177,7 @@ class ColumnSearchableTest extends TestCase
                 ];
             }
         };
-        Livewire::test(\Okipa\LaravelTable\Livewire\Table::class, ['config' => $config::class])
+        Livewire::test(\JscDev\LaravelTable\Livewire\Table::class, ['config' => $config::class])
             ->call('init')
             ->assertSet('searchBy', '')
             ->assertSeeHtmlInOrder([
@@ -236,7 +236,7 @@ class ColumnSearchableTest extends TestCase
                 ];
             }
         };
-        Livewire::test(\Okipa\LaravelTable\Livewire\Table::class, [
+        Livewire::test(\JscDev\LaravelTable\Livewire\Table::class, [
             'config' => $config::class,
             'configParams' => ['companyOwnerId' => $user1->id],
         ])
@@ -286,7 +286,7 @@ class ColumnSearchableTest extends TestCase
                 ];
             }
         };
-        Livewire::test(\Okipa\LaravelTable\Livewire\Table::class, ['config' => $config::class])
+        Livewire::test(\JscDev\LaravelTable\Livewire\Table::class, ['config' => $config::class])
             ->call('init')
             ->assertSet('searchBy', '')
             ->assertSeeHtmlInOrder([
@@ -340,7 +340,7 @@ class ColumnSearchableTest extends TestCase
                 ];
             }
         };
-        Livewire::test(\Okipa\LaravelTable\Livewire\Table::class, ['config' => $config::class])
+        Livewire::test(\JscDev\LaravelTable\Livewire\Table::class, ['config' => $config::class])
             ->call('init')
             ->set('searchBy', $users->first()->name)
             ->assertSeeHtmlInOrder([
@@ -423,7 +423,7 @@ class ColumnSearchableTest extends TestCase
         };
         $connection = config('database.default');
         Config::set('database.connections.' . $connection . '.driver', 'pgsql');
-        Livewire::test(\Okipa\LaravelTable\Livewire\Table::class, ['config' => $config::class])
+        Livewire::test(\JscDev\LaravelTable\Livewire\Table::class, ['config' => $config::class])
             ->call('init')
             ->set('searchBy', 'Test')
             ->call('$refresh');

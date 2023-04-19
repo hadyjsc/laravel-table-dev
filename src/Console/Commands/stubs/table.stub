@@ -2,8 +2,8 @@
 
 namespace DummyNamespace;
 
-use Okipa\LaravelTable\Table;
-use Okipa\LaravelTable\Abstracts\AbstractTableConfiguration;
+use JscDev\LaravelTable\Table;
+use JscDev\LaravelTable\Abstracts\AbstractTableConfiguration;
 
 class DummyClass extends AbstractTableConfiguration
 {

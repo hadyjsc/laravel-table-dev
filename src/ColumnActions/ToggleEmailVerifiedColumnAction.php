@@ -1,11 +1,11 @@
 <?php
 
-namespace Okipa\LaravelTable\ColumnActions;
+namespace JscDev\LaravelTable\ColumnActions;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Date;
 use Livewire\Component;
-use Okipa\LaravelTable\Abstracts\AbstractColumnAction;
+use JscDev\LaravelTable\Abstracts\AbstractColumnAction;
 
 class ToggleEmailVerifiedColumnAction extends AbstractColumnAction
 {

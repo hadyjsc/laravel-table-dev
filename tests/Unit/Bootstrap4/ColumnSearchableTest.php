@@ -4,9 +4,9 @@ namespace Tests\Unit\Bootstrap4;
 
 use Illuminate\Support\Facades\Config;
 use Livewire\Livewire;
-use Okipa\LaravelTable\Abstracts\AbstractTableConfiguration;
-use Okipa\LaravelTable\Column;
-use Okipa\LaravelTable\Table;
+use JscDev\LaravelTable\Abstracts\AbstractTableConfiguration;
+use JscDev\LaravelTable\Column;
+use JscDev\LaravelTable\Table;
 use Tests\Models\User;
 
 class ColumnSearchableTest extends \Tests\Unit\Bootstrap5\ColumnSearchableTest
@@ -33,7 +33,7 @@ class ColumnSearchableTest extends \Tests\Unit\Bootstrap5\ColumnSearchableTest
                 ];
             }
         };
-        Livewire::test(\Okipa\LaravelTable\Livewire\Table::class, ['config' => $config::class])
+        Livewire::test(\JscDev\LaravelTable\Livewire\Table::class, ['config' => $config::class])
             ->call('init')
             ->assertSeeHtmlInOrder([
                 '<thead>',
@@ -95,7 +95,7 @@ class ColumnSearchableTest extends \Tests\Unit\Bootstrap5\ColumnSearchableTest
                 ];
             }
         };
-        Livewire::test(\Okipa\LaravelTable\Livewire\Table::class, ['config' => $config::class])
+        Livewire::test(\JscDev\LaravelTable\Livewire\Table::class, ['config' => $config::class])
             ->call('init')
             ->set('searchBy', $users->first()->name)
             ->assertSeeHtmlInOrder([
